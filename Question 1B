@@ -1,0 +1,18 @@
+fun read_and_average 0 = 0.0
+    read_and_average n = 
+    let 
+      val _ = print "Enter a number: "
+      val num = TextIO.inputLine TextIO.stdIn
+    in
+      case num of
+        NONE => read_and_average n
+        SOME str => 
+        let 
+          val num = valOf (Real.fromString str)
+        in
+          num + read_and_average (n-1)
+        end
+    end;
+
+val total = read_and_average 7;
+val _ = print ("Average: " ^ Real.toString (total / 7.0));
