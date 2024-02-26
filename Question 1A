@@ -1,18 +1,1 @@
-   read_and_sum 0 = 0
-   read_and_sum n = 
-    let 
-      val _ = print "Enter a positive number: "
-      val num = TextIO.inputLine TextIO.stdIn
-    in
-      case num of
-        NONE => read_and_sum n
-        SOME str => 
-        let 
-          val num = valOf (Int.fromString str)
-        in
-          if num > 0 then num + read_and_sum (n-1)
-          else read_and_sum n
-        end
-    end;
 
-val _ = print ("Sum: " ^ Int.toString (read_and_sum 10));
