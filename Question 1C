@@ -1,22 +1,34 @@
-fun read_and_max 0 = NONE
-  | read_and_max n = 
-    let 
-      val _ = print "Enter a number: "
-      val num = TextIO.inputLine TextIO.stdIn
-    in
-      case num of
-        NONE => read_and_max n
-      | SOME str => 
-        let 
-          val num = valOf (Int.fromString str)
-        in
-          case read_and_max (n-1) of
-            NONE => SOME num
-          | SOME max => SOME (Int.max (num, max))
-        end
-    end;
+#include <iostream>
+#include <climits>
+using namespace std;
 
-val _ = 
-  case read_and_max 10 of
-    NONE => print "No numbers entered\n"
-  | SOME max => print ("Max: " ^ Int.toString max);
+
+int main() {
+    int memory[100]; // array of 100 integers for a maximum of 100 instructions
+    int temp;
+    int count = 0; // to count the number of valid inputs
+
+int seriesSize;
+    cout << "Enter the number of values in the series: ";
+    cin >> seriesSize;
+
+    if (seriesSize <= 0) {
+        cout << "Invalid series size." << endl;
+        return 0;
+    }
+
+    int largest = INT_MIN; // Initialize the largest to the smallest possible integer value
+    for (int i = 0; i < seriesSize; ++i) {
+        cout << "Enter value " << i + 1 << ": ";
+        cin >> temp;
+        if (temp > largest) {
+            largest = temp; // Update largest if a larger value is found
+        }
+    }
+    cout << "Largest number in the series: " << largest << endl;
+
+   
+
+    system("pause");
+    return 0;
+}
