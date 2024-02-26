@@ -1,18 +1,22 @@
-fun read_and_average 0 = 0.0
-    read_and_average n = 
-    let 
-      val _ = print "Enter a number: "
-      val num = TextIO.inputLine TextIO.stdIn
-    in
-      case num of
-        NONE => read_and_average n
-        SOME str => 
-        let 
-          val num = valOf (Real.fromString str)
-        in
-          num + read_and_average (n-1)
-        end
-    end;
+#include <iostream>
+#include <climits>
+using namespace std;
 
-val total = read_and_average 7;
-val _ = print ("Average: " ^ Real.toString (total / 7.0));
+int main() {
+    int memory[100]; // array of 100 integers for a maximum of 100 instructions
+    int temp;
+    int count = 0; // to count the number of valid inputs
+
+int total = 0;
+    cout << "Enter seven numbers to compute their average.\n";
+    for (int i = 0; i < 7; ++i) {
+        cout << "?: ";
+        cin >> temp;
+        total += temp;
+    }
+    double average = static_cast<double>(total) / 7; // Compute the average
+    cout << "Average of seven numbers: " << average << endl;
+
+ system("pause");
+    return 0;
+}
