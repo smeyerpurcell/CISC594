@@ -1,0 +1,22 @@
+fun read_and_max 0 = NONE
+  | read_and_max n = 
+    let 
+      val _ = print "Enter a number: "
+      val num = TextIO.inputLine TextIO.stdIn
+    in
+      case num of
+        NONE => read_and_max n
+      | SOME str => 
+        let 
+          val num = valOf (Int.fromString str)
+        in
+          case read_and_max (n-1) of
+            NONE => SOME num
+          | SOME max => SOME (Int.max (num, max))
+        end
+    end;
+
+val _ = 
+  case read_and_max 10 of
+    NONE => print "No numbers entered\n"
+  | SOME max => print ("Max: " ^ Int.toString max);
