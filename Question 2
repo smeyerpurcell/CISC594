@@ -13,6 +13,8 @@ cout << "*** location number and a question mark (?). ***" << endl;
 cout << "*** You then type the word for that location. ***" << endl;
 cout << "*** Type the sentinel -99999 to stop entering ***" << endl;
 cout << "*** your program. *** \n" << endl;
+
+
 for (int i = 0; i < 100; ++i){
 memory[i] = 0; // initializing all memory locations to 0
 }
@@ -29,6 +31,8 @@ memory[i] = temp;
 count++; // incrementing count(Nuber of valid instructions in memory)
 }
 }
+
+
 cout << "Program loading completed \nProgram execution begins" << endl;
 // initializing all registers to zero
 int counter = 0; // for instruction counter
@@ -56,24 +60,29 @@ case 11:
 // if opcode is 11(give output to user)
 cout << memory[operand] << endl;
 break;
+
 case 20:
 // if opcode is 20 (Load data from memory represented by operand into Accumulator)
 acc = memory[operand];
 break;
+
 case 21:
 // if opcode is 21 (Store data from Accumulator into memory represented by operand)
 memory[operand] = acc;
 break;
+
 case 30:
 // if opcode is 30 (add data in memory represented by operand with Accumulator)
 // and store it in accumulator
 acc += memory[operand];
 break;
+
 case 31:
 // if opcode is 31 (subtract data in memory represented by operand with Accumulator)
 // and store it in accumulator
 acc -= memory[operand];
 break;
+
 case 32:
 // if opcode is 32 (divide data in memory represented by operand with Accumulator)
 // and store it in accumulator
@@ -87,15 +96,18 @@ else{
 acc /= memory[operand];
 }
 break;
+
 case 33:
 // if opcode is 33 (multiply data in memory represented by operand with Accumulator)
 // and store it in accumulator
 acc *= memory[operand];
 break;
+
 case 40:
 // if opcode is 40 (Jump to adress given by data in memory represented by operand)
 i = memory[operand];
 break;
+
 case 41:
 // if opcode is 41 (Jump to adress given by data in memory represented by operand)
 // jump only if accumulator is Negative
@@ -103,6 +115,7 @@ if (acc < 0){
 i = memory[operand];
 }
 break;
+
 case 42:
 // if opcode is 42 (Jump to adress given by data in memory represented by operand)
 // jump only if accumulator is Non-Negative
@@ -110,6 +123,7 @@ if (acc >= 0){
 i = memory[operand];
 }
 break;
+
 case 43:
 // if opcode is 43 (Terminate the program after displaying the information)
 cout << endl << endl;
@@ -141,6 +155,7 @@ cout << endl;
 system("pause");
 return 0;
 break;
+
 default:
 cout << "*** Unknown Opcode ***" << endl;
 cout << "*** Simpletron execution abnormally terminated ***" << endl;
