@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-int memory[100]; // array of 100 integes for max of 100 instructions
+int memory[1000]; // array of 100 integes for max of 1000 instructions
 int temp;
 int count = 0; // to count number of valid inputs
 cout << "*** Welcome to Simpletron! ***" << endl;
@@ -15,10 +15,10 @@ cout << "*** Type the sentinel -99999 to stop entering ***" << endl;
 cout << "*** your program. *** \n" << endl;
 
 
-for (int i = 0; i < 100; ++i){
+for (int i = 0; i < 1000; ++i){
 memory[i] = 0; // initializing all memory locations to 0
 }
-for (int i = 0; i < 100; ++i){
+for (int i = 0; i < 1000; ++i){
 cout << i << " ? ";
 cin >> temp; // taking user input into temp to check for sentinal(-99999)
 if (temp == -99999){
@@ -43,8 +43,8 @@ int operand = 0; // for operand
 for (int i = 0; i < count; ++i){
 counter = i; // taking i into instruction counter
 IR = memory[counter]; // take instruction into Instruction Register
-opcode = IR / 100; // left most two digits of instruction represent opcode
-operand = IR % 100; // right most two digits of instruction represent operand
+opcode = IR / 1000; // left most two digits of instruction represent opcode
+operand = IR % 1000; // right most two digits of instruction represent operand
 if (operand < 0 || operand > 99){
 cout << "*** operand Out of Range ***" << endl;
 cout << "*** Simpletron execution abnormally terminated ***" << endl;
@@ -154,6 +154,21 @@ cout << endl;
 }
 system("pause");
 return 0;
+break;
+
+case 44:
+// if opcode is 44 (find the remainder of two operands)
+// and store it in accumulator
+if (memory[operand] == 0){
+// if denominator is zero (we can not divide. so, Terminate the program)
+cout << "*** Attempt to find remainder ***" << endl;
+cout << "*** Simpletron execution abnormally terminated ***" << endl;
+return 0;
+}
+else{
+(i quot j) * j + (i rem j) = i
+i = memory[operand];
+}
 break;
 
 default:
